@@ -7,19 +7,31 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+🧭 Cerita di Balik SNS Underground
+SNS Underground bukan sekadar media sosial. Ia adalah ruang alternatif.
+Tempat berbagi informasi, ide, keresahan, dan inspirasi — tanpa tekanan, tanpa paksaan identitas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Di tengah arus media sosial arus utama yang makin riuh dan penuh citra, kami merasa perlu membangun sesuatu yang sederhana namun bermakna:
+Platform untuk pelajar dan mahasiswa, tempat mereka bisa menulis, membaca, dan saling menyapa tanpa takut dihakimi.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+SNS Underground tidak mendukung anonim penuh — namun juga tidak menyarankan membagikan identitas asli.
+Di sini, kamu cukup hadir sebagai dirimu yang jujur, tapi tidak perlu diketahui.
+Nama samaran? Boleh. Avatar unik? Boleh. Yang penting: tulisanmu berguna, suaramu bebas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Kami percaya:
+
+🔍 Informasi yang baik harus mudah ditemukan dan dibagikan
+
+✍️ Tulisan jujur lebih bernilai dari konten viral
+
+🧘 Keheningan dan keaslian bisa berjalan beriringan
+
+🎯 Tujuan Web Ini
+Menjadi pustaka sosial mikro, di mana pengguna bisa berbagi catatan, pengalaman, opini, atau tips belajar
+
+Menjauh dari algoritma yang hanya mengejar engagement
+
+Membuka ruang diskusi yang bebas namun bertanggung jawabions.
 
 ## Learning Laravel
 
@@ -29,32 +41,6 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
