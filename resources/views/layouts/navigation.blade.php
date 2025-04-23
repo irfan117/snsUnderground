@@ -20,6 +20,41 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <!-- Notifikasi Dropdown -->
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="relative inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <i class="fas fa-bell"></i>
+                            @if (Auth::user()->unreadNotifications->count() > 0)
+                                <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                                    {{ Auth::user()->unreadNotifications->count() }}
+                                </span>
+                            @endif
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <h4 class="px-4 py-2 text-sm font-bold text-gray-700">Notifikasi</h4>
+                        <div class="max-h-64 overflow-y-auto">
+                            @forelse (Auth::user()->notifications as $notification)
+                                <x-dropdown-link :href="route('posts.show', $notification->data['post_id'])">
+                                    {{ $notification->data['message'] }}
+                                </x-dropdown-link>
+                            @empty
+                                <p class="px-4 py-2 text-sm text-gray-500">Tidak ada notifikasi.</p>
+                            @endforelse
+                        </div>
+                        <div class="border-t border-gray-200">
+                            <form method="POST" action="{{ route('notifications.markAllAsRead') }}">
+                                @csrf
+                                <button type="submit" class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100">
+                                    Tandai semua sebagai sudah dibaca
+                                </button>
+                            </form>
+                        </div>
+                    </x-slot>
+                </x-dropdown>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">

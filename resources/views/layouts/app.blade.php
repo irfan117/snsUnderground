@@ -13,7 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
- 
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -34,46 +35,6 @@
             </main>
         </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const likeButtons = document.querySelectorAll('.like-button');
-
-                likeButtons.forEach(button => {
-                    button.addEventListener('click', function () {
-                        const postId = this.getAttribute('data-post-id');
-                        const url = `/posts/${postId}/like`;
-
-                        fetch(url, {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.liked) {
-                                this.textContent = `${data.likeCount} Unlike`;
-                            } else {
-                                this.textContent = `${data.likeCount} Like`;
-                            }
-                        })
-                        .catch(error => console.error('Error:', error));
-                    });
-                });
-
-                const seeMoreButtons = document.querySelectorAll('.see-more');
-
-                seeMoreButtons.forEach(button => {
-                    button.addEventListener('click', function () {
-                        const fullContent = this.getAttribute('data-full-content');
-                        const postContent = this.previousElementSibling;
-
-                        postContent.innerHTML = fullContent;
-                        this.style.display = 'none'; // Sembunyikan tombol "Lihat lebih banyak"
-                    });
-                });
-            });
-        </script>
+     
     </body>
 </html>

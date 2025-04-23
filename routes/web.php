@@ -29,6 +29,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rute untuk menambahkan komentar pada postingan
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comments.store');
+
+    // Rute untuk menandai semua notifikasi sebagai telah dibaca
+    Route::post('/notifications/mark-all-as-read', function () {
+        auth()->user()->unreadNotifications->markAsRead();
+        return back();
+    })->name('notifications.markAllAsRead');
+
+    // Rute untuk menampilkan detail postingan
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 });
 
 // Rute autentikasi bawaan Laravel

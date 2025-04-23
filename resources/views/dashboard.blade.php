@@ -51,12 +51,12 @@
             <div>
                 <button class="like-button flex items-center text-blue-600" data-post-id="{{ $post->id }}">
                     <i class="fa{{ $post->likes->where('user_id', auth()->id())->count() ? 's' : 'r' }} fa-heart mr-1"></i>
-                    <span>{{ $post->likes->count() }}</span> Like
+                    <span class="like-count">{{ $post->likes->count() }}</span> Like
                 </button>
             </div>
 
             {{-- Komentar --}}
-            <div class="mt-4">
+            <div class="mt-4" id="comments-{{ $post->id }}">
                 <h4 class="text-sm font-bold">Komentar</h4>
                 @foreach($post->comments as $comment)
                     <div class="flex items-start text-sm text-gray-700 mt-2">
@@ -64,7 +64,6 @@
                         @if ($comment->user->profile_photo_path)
                             <img src="{{ asset('storage/' . $comment->user->profile_photo_path) }}" alt="Profile Photo" class="w-8 h-8 rounded-full object-cover mr-3">
                         @else
-                            {{-- Default Foto Profil --}}
                             <img src="{{ asset('images/default-profile.png') }}" alt="Default Profile Photo" class="w-8 h-8 rounded-full object-cover mr-3">
                         @endif
 
@@ -72,12 +71,42 @@
                         <div>
                             <span class="font-bold">{{ $comment->user->name }}</span>
                             <p>{{ $comment->content }}</p>
+
+                            {{-- Tombol Balas --}}
+                            <button class="reply-toggle text-blue-600 text-sm" data-comment-id="{{ $comment->id }}">Balas</button>
+
+                            {{-- Form Balas Komentar (Disembunyikan Secara Default) --}}
+                            <form action="{{ route('posts.comments.store', $post) }}" method="POST" class="reply-form mt-2 hidden" data-post-id="{{ $post->id }}" data-parent-id="{{ $comment->id }}">
+                                @csrf
+                                <textarea name="content" class="w-full border p-2 rounded text-sm" placeholder="Balas komentar..." required></textarea>
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2">Kirim</button>
+                            </form>
+
+                            {{-- Tampilkan Balasan --}}
+                            <div class="ml-8 mt-2" id="replies-{{ $comment->id }}">
+                                @foreach($comment->replies as $reply)
+                                    <div class="flex items-start text-sm text-gray-700 mt-2">
+                                        @if ($reply->user->profile_photo_path)
+                                            <img src="{{ asset('storage/' . $reply->user->profile_photo_path) }}" alt="Profile Photo" class="w-8 h-8 rounded-full object-cover mr-3">
+                                        @else
+                                            <img src="{{ asset('images/default-profile.png') }}" alt="Default Profile Photo" class="w-8 h-8 rounded-full object-cover mr-3">
+                                        @endif
+                                        <div>
+                                            <span class="font-bold">{{ $reply->user->name }}</span>
+                                            <p>{{ $reply->content }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 @endforeach
 
-                {{-- Form Komentar --}}
-                <form action="{{ route('posts.comments.store', $post) }}" method="POST" class="mt-2">
+                {{-- Tombol Tambah Komentar --}}
+                <button class="comment-toggle text-blue-600 text-sm mt-4" data-post-id="{{ $post->id }}">Tambah Komentar</button>
+
+                {{-- Form Komentar (Disembunyikan Secara Default) --}}
+                <form action="{{ route('posts.comments.store', $post) }}" method="POST" class="comment-form mt-2 hidden" data-post-id="{{ $post->id }}">
                     @csrf
                     <textarea name="content" class="w-full border p-2 rounded text-sm" placeholder="Tulis komentar..." required></textarea>
                     <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2">Kirim</button>
